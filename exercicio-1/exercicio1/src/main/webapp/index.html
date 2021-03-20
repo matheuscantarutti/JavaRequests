@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exercício 1</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/css/bootstrap-select.min.css" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+
+    </head>
+    <body>
+        <header class="mb-5">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg justify-content-between navbar-dark bg-dark">
+                    <a class="navbar-brand" href="#">Nave Tunada</a>
+                    <div class="" id="navbarNavAltMarkup">
+
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main class="container">
+
+            <div class="d-flex justify-content-center">
+
+                <div class="card w-75" >
+
+                    <div class="card-body d-flex justify-content-center  ">
+                        <form method="POST" action="orcamento" class="w-75">
+                            <h5 class="card-title">Escolhe a Nave</h5>
+
+                            <div class="form-group mb-5">
+                                <select name="carro_modelo" id="carro_modelo" class="form-control" onchange="showDetailsandFeatures()">
+                                    <option selected>Modelos</option>
+                                    <option>Volkswagen Golf TSI</option>    
+                                    <option>MINI Cooper John Cooper</option>
+                                    <option>Fiat Toro 4x4</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-5" hidden id="details">
+                                <label for="carro_preco">Preço(R$)</label>
+                                <input class="form-control" type="text" readonly id="carro_preco" name="carro_preco">
+
+                                <label for="carro_motor">Motor</label>
+                                <input class="form-control" type="text" readonly id="carro_motor" name="carro_motor">
+
+                                <label for="carro_fabricacao">Fabricação</label>
+                                <input class="form-control" type="text" readonly id="carro_fabricacao" name="carro_fabricacao">
+                            </div>
+
+
+                            <div class="form-group mb-5" hidden id="features">
+
+                                <h5 class="card-title">Agora, aquela tunada</h5>
+
+                                <div class="row">
+                                    <div class="form-control col-sm-6">Ar condicionado</div>
+                                    <div class="col-sm-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="Ar condicionado" value="3.000" id="ar">
+                                            <label class="form-check-label" for="cambio">
+                                                R$ 3.000
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="form-control col-sm-6">Câmbio automático</div>
+                                    <div class="col-sm-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="Câmbio automático" value="5.000" id="cambio">
+                                            <label class="form-check-label" for="cambio">
+                                                R$ 5.000
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-control col-sm-6">Alarme</div>
+                                    <div class="col-sm-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="Alarme" value="800" id="alarme">
+                                            <label class="form-check-label" for="alarme">
+                                                R$ 800
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-control col-sm-6">Pintura especial</div>
+                                    <div class="col-sm-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="Pintura Especial" value="2.500" id="pintura">
+                                            <label class="form-check-label" for="pintura">
+                                                R$ 2.500
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-control col-sm-6">Teto solar</div>
+                                    <div class="col-sm-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="Teto solar" value="4.000" id="teto">
+                                            <label class="form-check-label" for="teto">
+                                                R$ 4.000
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-control col-sm-6">Multimidia</div>
+                                    <div class="col-sm-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="Multimidia" value="1.800" id="multimidia">
+                                            <label class="form-check-label" for="gridCheck1">
+                                                R$ 1.800
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+
+                            </div>
+
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                        </form>
+
+                    </div>
+                </div>
+
+        </main>
+
+        <script>
+            function showDetailsandFeatures() {
+                document.querySelector("#details").removeAttribute("hidden");
+                document.querySelector("#features").removeAttribute("hidden");
+                var modelo = document.querySelector("#carro_modelo");
+                var preco = document.querySelector("#carro_preco");
+                var motor = document.querySelector("#carro_motor");
+                var fabricacao = document.querySelector("#carro_fabricacao");
+
+                if (modelo.value == "Volkswagen Golf TSI") {
+                    preco.setAttribute("value", "90.000");
+                    motor.setAttribute("value", "1.0");
+                    fabricacao.setAttribute("value", "Nacional");
+                }
+                if (modelo.value == "MINI Cooper John Cooper") {
+                    preco.setAttribute("value", "230.000");
+                    motor.setAttribute("value", "2.0");
+                    fabricacao.setAttribute("value", "Importado");
+                }
+                if (modelo.value == "Fiat Toro 4x4") {
+                    preco.setAttribute("value", "150.000");
+                    motor.setAttribute("value", "2.0");
+                    fabricacao.setAttribute("value", "Nacional");
+                }
+                if (modelo.value == "Modelos") {
+                    document.querySelector("#details").setAttribute("hidden", "true");
+                }
+
+            }
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/js/bootstrap-select.min.js"></script>
+    </body>
+</html>
