@@ -5,6 +5,7 @@
  */
 package com.mycompany.exercicio2.servlets;
 
+import com.mycompany.exercicio2.model.Trabalhador;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -33,16 +34,17 @@ public class ServletAjax extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ServletAjax</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ServletAjax at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            
+            Trabalhador t = new Trabalhador(
+                    request.getParameter("name"),
+                    Integer.parseInt(request.getParameter("age")),
+                    Integer.parseInt(request.getParameter("worktime"))
+            );
+            
+            out.println("<p>Nome: " + t.getNome() + "</p>");
+            out.println("<p>Idade: " + t.getIdade() + "</p>");
+            out.println("<p>Tempo de trabalho: " + t.getTempoTrabalho() + "</p>");
+            out.println("<p>Resultado: " + t.calculaAposentadoria() + "</p>");
         }
     }
 
