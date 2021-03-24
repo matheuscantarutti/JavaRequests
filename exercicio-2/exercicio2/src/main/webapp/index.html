@@ -18,44 +18,57 @@
             </div>
         </header>
         <main class="container">
-            <form>
-                <div class="form-group">
-                    <label for="user-name">Nome</label>
-                    <input type="text"  id="user-name" placeholder="Digite seu nome">
+            <div class="d-flex justify-content-center">
+                <form>
+                    <div class="form-group row ">
+                        <label for="user-name" class="col-form-label col-md-4 text-right">Nome</label>
+                        <div class="col-md-8">
+                            <input type="text"  class="form-control" id="user-name" placeholder="Digite seu nome">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="user-age" class="col-form-label col-md-4 text-right">Idade</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" pattern="^[0-9]+$" title="Apenas números" id="user-age">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="user-worktime" class="col-form-label col-md-4 text-right" >Tempo de trabalho</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" pattern="^[0-9]+$" title="Apenas números" id="user-worktime">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <button type="button" id="btn-submit" class="btn btn-primary col-md-12">Gerar resultado</button>
+                    </div>
+                </form>
+            </div>
+
+
+            <div  class="d-flex justify-content-center mt-5">
+                <div id="result" class="d-flex flex-column">
+                    
                 </div>
-                <div class="form-group">
-                    <label for="user-age">Idade</label>
-                    <input type="text" pattern="^[0-9]+$" title="Apenas números" id="user-age">
-                </div>
-                <div class="form-group">
-                    <label for="user-worktime">Tempo de trabalho</label>
-                    <input type="text"  pattern="^[0-9]+$" title="Apenas números" id="user-worktime">
-                </div>
-                
-                <button type="button" id="btn-submit" class="btn btn-primary">Gerar resultado</button>
-            </form>
-            <div id="result" class="mt-5">
-                
             </div>
 
 
         </main>
 
-        
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/js/bootstrap-select.min.js"></script>
         <script>
-            $("#btn-submit").on("click", function(){
+            $("#btn-submit").on("click", function () {
                 $.ajax({
                     url: "ResultadoAposentadoria",
                     type: "POST",
-                    data: {name: $("#user-name").val(), age: $("#user-age").val(), worktime: $("#user-worktime").val()}, 
-                    error: function(){
+                    data: {name: $("#user-name").val(), age: $("#user-age").val(), worktime: $("#user-worktime").val()},
+                    error: function () {
                         alert("erro!");
                     },
-                    success: function (data){
+                    success: function (data) {
                         $("#result").html(data);
                     }
                 });
