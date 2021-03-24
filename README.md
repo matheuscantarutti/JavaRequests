@@ -1,12 +1,12 @@
 Quatro pequenos projetos para demonstrar as formas de mover dados pelas páginas.
 
-Exercício 1 = Request direto para um Servlet.
-Exercício 2 = AJAX.
-Exercício 3 = 
-Exercício 4 = 
+Exercício 1 = Request direto para um Servlet.<br/>  
+Exercício 2 = AJAX.<br/>  
+Exercício 3 =   <br/>
+Exercício 4 =   <br/>
 
 Ferramentas utilizadas:
 
-- Java
-- Jquery
-- Bootstrap 4
+- Java<br/>
+- Jquery<br/>
+- Bootstrap 4<br/>
