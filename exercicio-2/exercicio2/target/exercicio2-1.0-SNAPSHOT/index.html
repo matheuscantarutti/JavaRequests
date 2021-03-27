@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exercício 2</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/css/bootstrap-select.min.css" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+    </head>
+    <body>
+        <header class="mb-5">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg justify-content-between navbar-dark bg-dark">
+                    <a class="navbar-brand" href="#">Calculadora de aposentadoria</a>
+                    <div class="" id="navbarNavAltMarkup">
+
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main class="container">
+            <div class="d-flex justify-content-center">
+                <form>
+                    <div class="form-group row ">
+                        <label for="user-name" class="col-form-label col-md-4 text-right">Nome</label>
+                        <div class="col-md-8">
+                            <input type="text"  class="form-control" id="user-name" placeholder="Digite seu nome">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="user-age" class="col-form-label col-md-4 text-right">Idade</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" pattern="^[0-9]+$" title="Apenas números" id="user-age">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="user-worktime" class="col-form-label col-md-4 text-right" >Tempo de trabalho</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" pattern="^[0-9]+$" title="Apenas números" id="user-worktime">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <button type="button" id="btn-submit" class="btn btn-primary col-md-12">Gerar resultado</button>
+                    </div>
+                </form>
+            </div>
+
+
+            <div  class="d-flex justify-content-center mt-5">
+                <div id="result" class="d-flex flex-column">
+                    
+                </div>
+            </div>
+
+
+        </main>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/js/bootstrap-select.min.js"></script>
+        <script>
+            $("#btn-submit").on("click", function () {
+                $.ajax({
+                    url: "ResultadoAposentadoria",
+                    type: "POST",
+                    data: {name: $("#user-name").val(), age: $("#user-age").val(), worktime: $("#user-worktime").val()},
+                    error: function () {
+                        alert("erro!");
+                    },
+                    success: function (data) {
+                        $("#result").html(data);
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

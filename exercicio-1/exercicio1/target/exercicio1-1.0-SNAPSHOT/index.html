@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exercício 1</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/css/bootstrap-select.min.css" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+
+    </head>
+    <body>
+        <header class="mb-5">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg justify-content-between navbar-dark bg-dark">
+                    <a class="navbar-brand" href="#">Concessionária São José</a>
+                    <div class="" id="navbarNavAltMarkup">
+
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main class="container">
+
+            <div class="d-flex justify-content-center">
+
+                <div class="card w-75" >
+
+                    <div class="card-body d-flex justify-content-center  ">
+                        <form method="POST" action="orcamento" class="w-75">
+                            <h5 class="card-title">Escolhe o modelo</h5>
+                            
+                            <div class="form-group mb-5">
+                                <select name="carro_modelo_preco" id="carro_modelo" class="form-control" onchange="showDetailsandFeatures()">
+                                    <option selected>Modelos</option>
+                                    <option value="Volkswagen Golf TSI-90000">Volkswagen Golf TSI - R$ 90.000,00</option>    
+                                    <option value="MINI Cooper John Cooper-230000">MINI Cooper John Cooper - R$ 230.000,00</option>
+                                    <option value="Fiat Toro 4x4-150000">Fiat Toro 4x4 - R$ 150.000,00</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-5" hidden id="details">
+
+                                <label for="carro_motor">Motor</label>
+                                <input class="form-control" type="text" readonly id="carro_motor" name="carro_motor">
+                                    
+                                <label for="carro_fabricacao">Fabricação</label>
+                                <input class="form-control" type="text" readonly id="carro_fabricacao" name="carro_fabricacao">
+                            </div>
+
+
+                            <div class="form-group mb-5" hidden id="features">
+
+                                <h5 class="card-title">Agora, escolha as melhorias</h5>
+
+                                <select name="adicionais" 
+                                        class="selectpicker" 
+                                        multiple data-live-search="true" 
+                                        title="Melhorias"
+                                        data-selected-text-format="count"
+                                        data-actions-box="true">
+
+                                    <option value="Ar condicionado-3000">Ar condicionado - R$ 3.000,00</option>
+                                    <option value="Cambio automatico-5000">Câmbio automático - R$ 5.000,00</option>
+                                    <option value="Alarme-800">Sistema de alarme - R$ 800,00</option>
+                                    <option value="Pintura especial-2500">Pintura especial, metálica ou comemorativa - R$ 2.500,00</option>
+                                    <option value="Teto solar-4000">Teto solar - R$ 4.000,00</option>
+                                    <option value="Kit multimidia-1800">Kit multimidia - R$ 1.800,00</option>
+
+                                </select>
+                                <br>
+
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary" name="btn-submit">Gerar orçamento</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+                    <script>
+                        function showDetailsandFeatures() {
+                            document.querySelector("#details").removeAttribute("hidden");
+                            document.querySelector("#features").removeAttribute("hidden");
+                            var modelo = document.querySelector("#carro_modelo");
+                            var motor = document.querySelector("#carro_motor");
+                            var fabricacao = document.querySelector("#carro_fabricacao");
+                            
+                            if (modelo.value === "Volkswagen Golf TSI-90000") {
+                                motor.setAttribute("value", "1.0");
+                                fabricacao.setAttribute("value", "Nacional");
+                            }
+                            if (modelo.value === "MINI Cooper John Cooper-230000") {
+                                motor.setAttribute("value", "2.0");
+                                fabricacao.setAttribute("value", "Importado");
+                            }
+                            if (modelo.value === "Fiat Toro 4x4-150000") {
+                                motor.setAttribute("value", "2.0");
+                                fabricacao.setAttribute("value", "Nacional");
+                            }
+                            if (modelo.value === "Modelos") {
+                                document.querySelector("#details").setAttribute("hidden", "true");
+                            }
+
+                        }
+                    </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/js/bootstrap-select.min.js"></script>
+    </body>
+</html>
