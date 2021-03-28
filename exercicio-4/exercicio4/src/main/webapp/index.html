@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exercício 3</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/css/bootstrap-select.min.css" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+    </head>
+    <body>
+        <header class="mb-5">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg justify-content-between navbar-dark bg-dark">
+                    <a class="navbar-brand" href="#">Eleição para representante de turma</a>
+                </nav>
+            </div>
+        </header>
+        <main class="container">
+            <div class="">
+                <form method="POST" action="ServletVotacao">
+
+                    <div class="form-group row mb-5">
+                        <label for="nome-eleitor" class="col-form-label col-md-4 text-right">Nome do Eleitor</label>
+                        <div class="col-md-4">
+                            <input type="text" name="nome-eleitor" class="form-control" id="nome-eleitor" 
+                                   placeholder="Digite seu nome completo" required autofocus>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row mb-5">
+                        <label for="nome-candidato" class="col-form-label col-md-4 text-right">Nome do Candidato</label>
+                        <div class="col-md-4">
+                            <input type="text" name="nome-candidato" class="form-control" id="nome-candidato" 
+                                   placeholder="Digite o nome completo do seu candidato" required>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="form-group  text-center">
+                        <button type="submit" id="btn-submit" class="btn btn-success col-md-2">Enviar voto</button>
+                    </div>
+                </form>
+            </div>
+          
+        </main>
+        
+        <footer class="container">
+            <form method="POST" action="#">
+                <div class="float-right">
+                    <button class="btn btn-warning" id="encerraEleiçao" name="encerraEleicao">Encerrar eleição</button>
+                </div>
+            </form>
+        </footer>
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/js/bootstrap-select.min.js"></script>
+        <script>
+           
+        </script>
+    </body>
+</html>
