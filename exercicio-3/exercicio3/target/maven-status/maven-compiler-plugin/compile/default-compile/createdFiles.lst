@@ -1,2 +1,4 @@
-com\mycompany\exercicio3\Servlets\AjaxCpf.class
-com\mycompany\exercicio3\Servlets\ResultadosPesquisa.class
+com\mycompany\exercicio3\Models\Pesquisa.class
+com\mycompany\exercicio3\Models\Pessoa.class
+com\mycompany\exercicio3\Servlets\ServletAjaxCpf.class
+com\mycompany\exercicio3\Servlets\ServletPesquisa.class

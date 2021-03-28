@@ -5,9 +5,12 @@
  */
 package com.mycompany.exercicio3.Servlets;
 
+import com.mycompany.exercicio3.Models.Pesquisa;
+import com.mycompany.exercicio3.Models.Pessoa;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.regex.Pattern;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,8 +21,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Matheus
  */
-@WebServlet(name = "AjaxCpf", urlPatterns = {"/ValidaCpf"})
-public class AjaxCpf extends HttpServlet {
+@WebServlet(name = "ServletPesquisa", urlPatterns = {"/ServletPesquisa"})
+public class ServletPesquisa extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,15 +38,34 @@ public class AjaxCpf extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             
-            String cpf = request.getParameter("cpf");
             
-            if(cpf != null){
-                if(Pattern.matches("^[0-9]{11}$", cpf) == true){
-                    out.println("<p id='cpf-validado' class='valido'>CPF válido</p>");
-                } else{
-                    out.println("<p id='cpf-validado' class='invalido'>CPF inválido</p>");
-                }
+           
+            Pessoa p = new Pessoa(
+                    (String) request.getParameter("user-cpf"),
+                    request.getParameter("user-gender"),
+                    request.getParameter("user-hair"),
+                    request.getParameter("user-eyes"),
+                    Integer.parseInt(request.getParameter("user-age")),
+                    Integer.parseInt(request.getParameter("user-height"))
+            );
+            
+            
+            if(request.getSession(false) == null){
+                ArrayList<Pessoa> entrevistados = new ArrayList<>();
+                Pesquisa pesquisa = new Pesquisa(entrevistados);
+                pesquisa.addEntrevistado(p);
+                request.getSession().setAttribute("pesquisa", pesquisa);
+                response.sendRedirect("ResultadoPesquisa.jsp?total="+pesquisa.getEntrevistados().size());
+            } else{
+                Pesquisa pesquisa = (Pesquisa) request.getSession().getAttribute("pesquisa");
+                pesquisa.addEntrevistado(p);
+                request.getSession().removeAttribute("pesquisa");
+                request.getSession().setAttribute("pesquisa", pesquisa);
+                response.sendRedirect("ResultadoPesquisa.jsp?total="+pesquisa.getEntrevistados().size());
             }
+            
+            
+            
         }
     }
 

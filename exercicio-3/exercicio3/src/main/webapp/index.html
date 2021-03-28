@@ -19,7 +19,8 @@
         </header>
         <main class="container">
             <div class="d-flex justify-content-center">
-                <form method="POST" action="ResultadosPesquisa">
+                <form method="POST" action="ServletPesquisa">
+                    <input hidden name="index" id="index">
                     <div class="form-group row ">
                         <label for="user-cpf" class="col-form-label col-md-4 text-right">CPF</label>
                         <div class="col-md-8">
@@ -62,7 +63,15 @@
                     <div class="form-group row">
                         <label for="user-age" class="col-form-label col-md-4 text-right" >Idade</label>
                         <div class="col-md-4">
-                            <input type="text" class="form-control" pattern="^[0-9]+$" title="Apenas números" name="user-age" id="user-age" required>
+                            <input type="text" class="form-control" pattern="^[0-9]{2}$" title="Idade em anos" name="user-age" 
+                                   id="user-age" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="user-height" class="col-form-label col-md-4 text-right" >Altura</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" pattern="^[0-9]{3}$" title="Altura em centímetros" name="user-height" 
+                                   id="user-height" required>                   
                         </div>
                     </div>
                     <div class="form-group row">
@@ -70,7 +79,7 @@
                     </div>
                 </form>
             </div>
-            <div id="ajax-cpf"></div>
+          
         </main>
 
 
@@ -95,9 +104,13 @@
             });
             
             $("#btn-submit").on("click", function(e){
+                var index = 0;
                 if($("#cpf-validado").hasClass("invalido")){
                      e.preventDefault();
                      $("#user-cpf").focus();
+                } else {
+                    index++;
+                    $("#index").val(index);
                 }
             });
         </script>

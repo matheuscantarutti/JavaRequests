@@ -7,6 +7,7 @@ package com.mycompany.exercicio3.Servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.regex.Pattern;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Matheus
  */
-@WebServlet(name = "ResultadosPesquisa", urlPatterns = {"/ResultadosPesquisa"})
-public class ResultadosPesquisa extends HttpServlet {
+@WebServlet(name = "AjaxCpf", urlPatterns = {"/ValidaCpf"})
+public class ServletAjaxCpf extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,10 +34,16 @@ public class ResultadosPesquisa extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
-           
+            
             String cpf = request.getParameter("cpf");
-           
-           
+            
+            if(cpf != null){
+                if(Pattern.matches("^[0-9]{11}$", cpf) == true){
+                    out.println("<p id='cpf-validado' class='valido'>CPF válido</p>");
+                } else{
+                    out.println("<p id='cpf-validado' class='invalido'>CPF inválido</p>");
+                }
+            }
         }
     }
 
