@@ -16,7 +16,7 @@
         </header>
         <main class="container">
             <div class="">
-                <form method="POST" action="VotoConfirmado">
+                <form method="POST" action="ConfirmaVoto">
 
                     <div class="form-group row mb-5">
                         <label for="nome-eleitor" class="col-form-label col-md-4 text-right">Nome do Eleitor</label>
@@ -36,7 +36,7 @@
                     
                     
                     <div class="form-group  text-center">
-                        <button type="submit" id="btn-submit" class="btn btn-success col-md-2">Enviar voto</button>
+                        <button type="submit" id="btn-submit" class="btn btn-success col-md-2" name="btn-submit" value="enviaVoto"> Enviar voto</button>
                     </div>
                 </form>
             </div>
@@ -44,9 +44,9 @@
         </main>
         
         <footer class="container">
-            <form method="POST" action="#">
+            <form method="POST" action="ContaVotos">
                 <div class="float-right">
-                    <button class="btn btn-warning" id="encerraEleiçao" name="encerraEleicao">Encerrar eleição</button>
+                    <button class="btn btn-warning" id="encerraEleiçao" name="btn-submit" value="encerraEleicao">Encerrar eleição</button>
                 </div>
             </form>
         </footer>
@@ -57,7 +57,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.6/js/bootstrap-select.min.js"></script>
         <script>
-           
+        
         </script>
     </body>
 </html>

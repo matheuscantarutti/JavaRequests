@@ -5,8 +5,10 @@
  */
 package com.mycompany.exercicio4.Servlets;
 
+import com.mycompany.exercicio4.Models.Urna;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Matheus
  */
-@WebServlet(name = "VotoConfirmado", urlPatterns = {"/VotoConfirmado"})
-public class ServletVotacao extends HttpServlet {
+@WebServlet(name = "ContaVotos", urlPatterns = {"/ContaVotos"})
+public class ContaVotos extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,8 +36,16 @@ public class ServletVotacao extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
            
+            String btn = request.getParameter("btn-submit");
             
-            out.println(request.getParameter("nome-eleitor"));
+            if(btn.equals("encerraEleicao")){
+                Urna urna = (Urna) request.getSession().getAttribute("urna");
+                RequestDispatcher rd = request.getRequestDispatcher("resultadoEleicao.jsp");
+                
+                request.setAttribute("urna", urna);
+                
+                rd.forward(request, response);
+            }
         }
     }
 
